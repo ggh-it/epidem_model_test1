@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}Результат симуляції{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Результат симуляції</h2>
+    <p><strong>Дата:</strong> {{ simulation.timestamp|date:"d.m.Y H:i" }}</p>
+
+    <h3>Параметри моделі</h3>
+    <ul class="list-group mb-4">
+        {% for key, value in ordered_parameters.items %}
+        <li class="list-group-item"><strong>{{ key }}</strong>: {{ value }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Пікові значення</h3>
+    <ul class="list-group mb-4">
+        <li class="list-group-item">Пік S: <strong>{{ simulation.s_peak|floatformat:2 }}</strong> (на {{ simulation.s_peak_day|floatformat:2 }} день)</li>
+        <li class="list-group-item">Пік E: <strong>{{ simulation.e_peak|floatformat:2 }}</strong> (на {{ simulation.e_peak_day|floatformat:2 }} день)</li>
+        <li class="list-group-item">Пік I: <strong>{{ simulation.i_peak|floatformat:2 }}</strong> (на {{ simulation.i_peak_day|floatformat:2 }} день)</li>
+        <li class="list-group-item">Пік R: <strong>{{ simulation.r_peak|floatformat:2 }}</strong> (на {{ simulation.r_peak_day|floatformat:2 }} день)</li>
+        <li class="list-group-item">Пік V: <strong>{{ simulation.v_peak|floatformat:2 }}</strong> (на {{ simulation.v_peak_day|floatformat:2 }} день)</li>
+        <li class="list-group-item">Пік D: <strong>{{ simulation.d_peak|floatformat:2 }}</strong> (на {{ simulation.d_peak_day|floatformat:2 }} день)</li>
+    </ul>
+
+    <h3>Графік</h3>
+    <div class="text-center">
+        <img src="{{ plot_url }}" alt="Графік динаміки SEIRVD моделі" class="img-fluid rounded shadow my-3">
+        <div class="mt-3">
+            <a href="{% url 'download_graph' simulation.id %}" class="btn btn-secondary">Завантажити графік</a>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{% url 'export_csv' simulation.id %}" class="btn btn-success">Експорт в CSV</a>
+    </div>
+
+    <a href="{% url 'profile' %}" class="btn btn-primary mt-3">Назад до особистого кабінету</a>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">SEIRVD моделювання</h2>
+
+    <div class="d-flex justify-content-center">
+        <form method="post" class="w-50 p-4 border rounded shadow-sm bg-light">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">β (beta) - Коефіцієнт швидкості зараження</label>
+                <input type="number" step="0.01" min="0" name="beta" value="0.3" class="form-control" oninput="validateInput(this)">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">σ (sigma) - Коефіцієнт швидкості інкубації</label>
+                <input type="number" step="0.01" min="0" name="sigma" value="0.1" class="form-control" oninput="validateInput(this)">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">γ (gamma) - Коефіцієнт швидкості одужання</label>
+                <input type="number" step="0.01" min="0" name="gamma" value="0.05" class="form-control" oninput="validateInput(this)">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">ν (nu) - Коефіцієнт швидкості вакцинації</label>
+                <input type="number" step="0.01" min="0" name="nu" value="0.01" class="form-control" oninput="validateInput(this)">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">μ (mu) - Коефіцієнт швидкості смертності</label>
+                <input type="number" step="0.01" min="0" name="mu" value="0.01" class="form-control" oninput="validateInput(this)">
+            </div>
+
+            <button type="submit" class="btn btn-success w-100">Запустити моделювання</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function validateInput(input) {
+        if (input.value < 0) {
+            input.value = 0;
+        }
+    }
+</script>
+{% endblock %}

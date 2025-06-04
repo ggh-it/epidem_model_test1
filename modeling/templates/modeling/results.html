@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Результати моделювання{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Результати моделювання</h2>
+
+        <div class="row justify-content-start">
+            <div class="col-md-6">
+                <h4 class="mb-3">Параметри моделі</h4>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><strong>beta:</strong> {{ simulation.beta|floatformat:2 }}</li>
+                    <li class="list-group-item"><strong>sigma:</strong> {{ simulation.sigma|floatformat:2 }}</li>
+                    <li class="list-group-item"><strong>gamma:</strong> {{ simulation.gamma|floatformat:2 }}</li>
+                    <li class="list-group-item"><strong>nu:</strong> {{ simulation.nu|floatformat:2 }}</li>
+                    <li class="list-group-item"><strong>mu:</strong> {{ simulation.mu|floatformat:2 }}</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row justify-content-start">
+            <div class="col-md-6">
+                <h4 class="mb-3">Пікові значення</h4>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item">Пік вразливих: <strong>{{ peaks.s_peak|floatformat:2 }}</strong> (на {{ peaks.s_peak_day|floatformat:2 }} день)</li>
+                    <li class="list-group-item">Пік інкубованих: <strong>{{ peaks.e_peak|floatformat:2 }}</strong> (на {{ peaks.e_peak_day|floatformat:2 }} день)</li>
+                    <li class="list-group-item">Пік інфікованих: <strong>{{ peaks.i_peak|floatformat:2 }}</strong> (на {{ peaks.i_peak_day|floatformat:2 }} день)</li>
+                    <li class="list-group-item">Пік одужалих: <strong>{{ peaks.r_peak|floatformat:2 }}</strong> (на {{ peaks.r_peak_day|floatformat:2 }} день)</li>
+                    <li class="list-group-item">Пік вакцинованих: <strong>{{ peaks.v_peak|floatformat:2 }}</strong> (на {{ peaks.v_peak_day|floatformat:2 }} день)</li>
+                    <li class="list-group-item">Пік померлих: <strong>{{ peaks.d_peak|floatformat:2 }}</strong> (на {{ peaks.d_peak_day|floatformat:2 }} день)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center mb-4">
+            <h4 class="mb-3">Графік динаміки SEIRVD моделі</h4>
+            <img src="{{ plot_url }}" alt="График SEIRV-D" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="text-center mt-3">
+            <a href="{% url 'simulate' %}" class="btn btn-success">Новий розрахунок</a>
+        </div>
+    </div>
+{% endblock %}

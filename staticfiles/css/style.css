@@ -1,0 +1,20 @@
+/* Выравнивание элементов в навигации */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Стилизация кнопки "Выйти" */
+.logout-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #dc3545;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}
