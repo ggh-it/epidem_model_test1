@@ -4,7 +4,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
-from django.core.paginator import Paginator  # Добавляємо пагінатор
+from django.core.paginator import Paginator  # Додаємо пагінатор
 from modeling.models import SimulationResult  # Імпортуємо модель результатів
 
 

@@ -7,9 +7,9 @@ from .models import SimulationResult
 
 @admin.register(SimulationResult)
 class SimulationResultAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "timestamp")  # Какие поля показывать в списке
-    list_filter = ("user", "timestamp")  # Фильтры справа
-    search_fields = ("user__username",)  # Поиск по пользователю
+    list_display = ("id", "user", "timestamp")  # Які поля відображати у списку
+    list_filter = ("user", "timestamp")  # Фільтри справа
+    search_fields = ("user__username",)  # Пошук по користувачу
 
-admin.site.site_header = "SEIRVD Адмін-панель"  # Изменение заголовка в панели админа
+admin.site.site_header = "SEIRVD Адмін-панель"  # Зміна заголовку в панелі адміна
 admin.site.site_title = "SEIRVD"

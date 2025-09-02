@@ -27,7 +27,7 @@ def run_simulation(beta, sigma, gamma, nu, mu):
 
     t = sol.t  # Часові точки
 
-    # Знаходження піклових значень та їх днів
+    # Знаходження пікових значень та їх днів
     peaks = {
         's_peak': np.max(sol.y[0]), 's_peak_day': t[np.argmax(sol.y[0])],
         'e_peak': np.max(sol.y[1]), 'e_peak_day': t[np.argmax(sol.y[1])],

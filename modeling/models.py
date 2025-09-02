@@ -4,10 +4,10 @@ from django.contrib.auth.models import User
 class SimulationResult(models.Model):
     """ Модель для зберігання результатів симуляції SEIRVD. """
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    timestamp = models.DateTimeField(auto_now_add=True)  # Дата и время запуска
+    timestamp = models.DateTimeField(auto_now_add=True)  # Дата та час запуску
 
     # Вхідні параметри моделі
-    beta = models.FloatField(default=0.0)  # Скорость передачи инфекции Швидкість передачі
+    beta = models.FloatField(default=0.0)  # Швидкість передачі інфекції
     sigma = models.FloatField(default=0.0)  # Швидкість переходу з E в I
     gamma = models.FloatField(default=0.0)  # Швидкість одужання
     nu = models.FloatField(default=0.0)  # Швидкість вакцинації

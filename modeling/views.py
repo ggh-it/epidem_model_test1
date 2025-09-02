@@ -123,7 +123,7 @@ def simulation_detail(request, pk):
 
 
 def generate_saved_plot(simulation):
-    """ Відновлює графік з збережених даних та додає пікові точки. """
+    """ Відновлює графік від збережених даних та додає пікові точки. """
     fig, ax = plt.subplots(figsize=(8, 5))
 
     t = simulation.results.get("time", [])
